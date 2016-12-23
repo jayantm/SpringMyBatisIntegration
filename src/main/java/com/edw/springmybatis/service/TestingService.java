@@ -16,11 +16,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 public class TestingService {
 
-    @Autowired
-    private TestingMapper testingMapper;
+	@Autowired
+	private TestingMapper testingMapper;
 
-    public void insert() throws Exception {
-        testingMapper.insert(new Testing("" + new Random().nextInt(), "" + new Random().nextInt()));
-        testingMapper.insert(new Testing()); // this will throw an exception
-    }
+	public void insert() throws Exception {
+		testingMapper.deleteAll();
+		testingMapper.insert(new Testing("" + new Random().nextInt(), "" + new Random().nextInt()));
+		testingMapper.insert(new Testing()); // this will throw an exception
+	}
 }

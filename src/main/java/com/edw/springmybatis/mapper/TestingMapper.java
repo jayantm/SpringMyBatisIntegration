@@ -9,5 +9,6 @@ import com.edw.springmybatis.bean.Testing;
 public interface TestingMapper {
 
     public void insert(Testing testing);
+    public void deleteAll();
     
 }
